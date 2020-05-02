@@ -5,11 +5,178 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="netflixRoulette.MoviePage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+	<ContentPage.Content>
+		<ScrollView>
+			<StackLayout>
+				<Label Text="12 Angry Men"
+				   BackgroundColor="Aquamarine"
+				   FontSize="32"
+				   FontAttributes="Bold"
+				   HorizontalTextAlignment="Center"/>
+				<Label Text="Life is in their hands. Death is on their minds."
+				   FontSize="16"
+				   FontAttributes="Italic"
+				   HorizontalTextAlignment="Center"
+				   BackgroundColor="HotPink"/>
+				<Image Source="https://image.tmdb.org/t/p/original/6396QiokQBiTgPgB16nUWxYdM7N.jpg" />
+				<StackLayout Orientation="Horizontal"
+						 HorizontalOptions="Center">
+					<Label Text="1957"
+					   BackgroundColor="LightCoral"
+					   FontSize="16" 
+					   VerticalTextAlignment="Center"/>
+					<Label Text="/"
+					   BackgroundColor="LightBlue"
+					   FontSize="20" />
+					<Label Text="1h 36m"
+					   BackgroundColor="LightCoral"
+					   FontSize="16"  
+					   VerticalTextAlignment="Center"/>
+					<Label Text="/"
+					   BackgroundColor="LightBlue"
+					   FontSize="20"/>
+					<Label Text="Drama"
+					   BackgroundColor="LightCoral"
+					   FontSize="16" 
+					   VerticalTextAlignment="Center"/>
+				</StackLayout>
+				<StackLayout Orientation="Horizontal">
+					<Image Source="https://image.tmdb.org/t/p/original/7sf9CgJz30aXDvrg7DYYUQ2U91T.jpg"
+					   HeightRequest="200"/>
+					<Label Text="The defense and the prosecution have rested and the jury is filing into the jury room to decide if a young Spanish-American is guilty or innocent of murdering his father. What begins as an open and shut case soon becomes a mini-drama of each of the jurors' prejudices and preconceptions about the trial, the accused, and each other."
+					   BackgroundColor="GreenYellow"
+					   FontSize="16" />
+				</StackLayout>
+				<Label Text="Cast"
+				   BackgroundColor="DarkSalmon"
+				   FontSize="24"
+				   HorizontalTextAlignment="Center"/>
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						
+					</Grid.RowDefinitions>
+					<Image Source="https://image.tmdb.org/t/p/original/2j4LJJfTPQtvnjp8LfSGOvWFATO.jpg"
+						   HeightRequest="50"
+						   Grid.Column="0"
+						   Grid.Row="0"/>
+					<Label Text="Martin Balsam"
+						   FontSize="16"
+						   BackgroundColor="LimeGreen"
+						   VerticalTextAlignment="Center"
+						   Grid.Column="1"
+						   Grid.Row="0"/>
+					<Label Text="..."
+						   FontSize="16"
+						   BackgroundColor="Lime"
+						   VerticalTextAlignment="Center"
+						   Grid.Column="2"
+						   Grid.Row="0"/>
+					<Label Text="Juror 1"
+						   FontSize="16"
+						   BackgroundColor="LimeGreen"
+						   VerticalTextAlignment="Center"
+						   Grid.Column="3"
+						   Grid.Row="0"/>
+					<Image Source="https://image.tmdb.org/t/p/original/6vfLLGeGuO6Ko0VRnyhgE2v6RUu.jpg"
+						   HeightRequest="50"
+						   Grid.Column="0"
+						   Grid.Row="1"/>
+					<Label Text="John Fiedler"
+						   FontSize="16"
+						   BackgroundColor="LimeGreen"
+						   VerticalTextAlignment="Center"
+						   Grid.Column="1"
+						   Grid.Row="1"/>
+					<Label Text="..."
+						   FontSize="16"
+						   BackgroundColor="Lime"
+						   VerticalTextAlignment="Center"
+						   Grid.Column="2"
+						   Grid.Row="1"/>
+					<Label Text="Juror 2"
+						   FontSize="16"
+						   BackgroundColor="LimeGreen"
+						   VerticalTextAlignment="Center"
+						   Grid.Column="3"
+						   Grid.Row="1"/>
+					<Image Source="https://image.tmdb.org/t/p/original/coJZ8923R8eWTAS2EVZe90zf0Ja.jpg"
+						   HeightRequest="50"
+						   Grid.Column="0"
+						   Grid.Row="2"/>
+					<Label Text="Lee J. Cobb"
+						   FontSize="16"
+						   BackgroundColor="LimeGreen"
+						   VerticalTextAlignment="Center"
+						   Grid.Column="1"
+						   Grid.Row="2"/>
+					<Label Text="..."
+						   FontSize="16"
+						   BackgroundColor="Lime"
+						   VerticalTextAlignment="Center"
+						   Grid.Column="2"
+						   Grid.Row="2"/>
+					<Label Text="Juror 3"
+						   FontSize="16"
+						   BackgroundColor="LimeGreen"
+						   VerticalTextAlignment="Center"
+						   Grid.Column="3"
+						   Grid.Row="2"/>
+					<Image Source="https://image.tmdb.org/t/p/original/yZYUBQ7iCXgJWEBkQZaPfHCM9EU.jpg"
+						   HeightRequest="50"
+						   Grid.Column="0"
+						   Grid.Row="3"/>
+					<Label Text="E. G. Marshall"
+						   FontSize="16"
+						   BackgroundColor="LimeGreen"
+						   VerticalTextAlignment="Center"
+						   Grid.Column="1"
+						   Grid.Row="3"/>
+					<Label Text="..."
+						   FontSize="16"
+						   BackgroundColor="Lime"
+						   VerticalTextAlignment="Center"
+						   Grid.Column="2"
+						   Grid.Row="3"/>
+					<Label Text="Juror 4"
+						   FontSize="16"
+						   BackgroundColor="LimeGreen"
+						   VerticalTextAlignment="Center"
+						   Grid.Column="3"
+						   Grid.Row="3"/>
+					<Image Source="https://image.tmdb.org/t/p/original/7nJaWFPn1ppfbp3Ai3CnTtUm0PE.jpg"
+						   HeightRequest="50"
+						   Grid.Column="0"
+						   Grid.Row="4"/>
+					<Label Text="Jack Klugman"
+						   FontSize="16"
+						   BackgroundColor="LimeGreen"
+						   VerticalTextAlignment="Center"
+						   Grid.Column="1"
+						   Grid.Row="4"/>
+					<Label Text="..."
+						   FontSize="16"
+						   BackgroundColor="Lime"
+						   VerticalTextAlignment="Center"
+						   Grid.Column="2"
+						   Grid.Row="4"/>
+					<Label Text="Juror 5"
+						   FontSize="16"
+						   BackgroundColor="LimeGreen"
+						   VerticalTextAlignment="Center"
+						   Grid.Column="3"
+						   Grid.Row="4"/>
+				</Grid>
+				<Label Text="See full cast..."
+					   FontSize="20"
+					   BackgroundColor="ForestGreen"
+					   HorizontalTextAlignment="Center"/>
+			</StackLayout>
+		</ScrollView>
+	</ContentPage.Content>
 </ContentPage>

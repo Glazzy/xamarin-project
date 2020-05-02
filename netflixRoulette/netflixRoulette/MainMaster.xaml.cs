@@ -35,7 +35,7 @@ namespace netflixRoulette
 				{
 					new MainMasterMenuItem { Id = 0, Title = "Favorites", TargetType = typeof(FavoritesPage) },
 					new MainMasterMenuItem { Id = 1, Title = "Random Movie", TargetType = typeof(RandomMoviePage)  },
-					new MainMasterMenuItem { Id = 2, Title = "Page 3" },
+					new MainMasterMenuItem { Id = 2, Title = "Movie", TargetType = typeof(MoviePage)  },
 					new MainMasterMenuItem { Id = 3, Title = "Page 4" },
 					new MainMasterMenuItem { Id = 4, Title = "Page 5" },
 				});
