@@ -50,38 +50,12 @@
 				   BackgroundColor="DarkSalmon"
 				   FontSize="24"
 				   HorizontalTextAlignment="Center"/>
-				<Grid>
+				<Grid x:Name="CastGrid">
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition Width="Auto" />
 						<ColumnDefinition Width="*" />
-						<ColumnDefinition Width="Auto" />
 						<ColumnDefinition Width="*" />
 					</Grid.ColumnDefinitions>
-					<Grid.RowDefinitions>
-
-					</Grid.RowDefinitions>
-					<Image Source="https://image.tmdb.org/t/p/original/2j4LJJfTPQtvnjp8LfSGOvWFATO.jpg"
-						   HeightRequest="50"
-						   Grid.Column="0"
-						   Grid.Row="0"/>
-					<Label Text="Martin Balsam"
-						   FontSize="16"
-						   BackgroundColor="LimeGreen"
-						   VerticalTextAlignment="Center"
-						   Grid.Column="1"
-						   Grid.Row="0"/>
-					<Label Text="..."
-						   FontSize="16"
-						   BackgroundColor="Lime"
-						   VerticalTextAlignment="Center"
-						   Grid.Column="2"
-						   Grid.Row="0"/>
-					<Label Text="Juror 1"
-						   FontSize="16"
-						   BackgroundColor="LimeGreen"
-						   VerticalTextAlignment="Center"
-						   Grid.Column="3"
-						   Grid.Row="0"/>
 				</Grid>
 				<Label Text="See full cast..."
 					   FontSize="20"

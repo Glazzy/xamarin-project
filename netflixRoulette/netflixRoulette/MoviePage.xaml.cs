@@ -1,7 +1,7 @@
 ﻿using netflixRoulette.Models;
 using Newtonsoft.Json;
+using System;
 using System.Net.Http;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -21,33 +21,43 @@ namespace netflixRoulette
 			InitializeComponent();
 		}
 
-		protected async override void OnAppearing()
+		protected override void OnAppearing()
 		{
 			base.OnAppearing();
-			movie = await fetchMovie(movieId);
-			renderMovie(movie);
+			FetchMovie(movieId);
 		}
 
-		private async Task<Movie> fetchMovie(int movieId)
+		private async void FetchMovie(int movieId)
 		{
-			var content = await _client.GetStringAsync($"https://api.themoviedb.org/3/movie/{movieId}?api_key=753434cd814a187484a6ad7f29768fe0&append_to_response=credits");
-			return JsonConvert.DeserializeObject<Movie>(content);
+			try
+			{
+				var content = await _client.GetStringAsync($"https://api.themoviedb.org/3/movie/{movieId}?api_key=753434cd814a187484a6ad7f29768fe0&append_to_response=credits");
+				movie = JsonConvert.DeserializeObject<Movie>(content);
+			}
+			catch (HttpRequestException e)
+			{
+				// Handle error...
+			}
+			finally
+			{
+				if (movie != null) RenderMovie(movie);
+			}
 		}
 
-		private void renderMovie(Movie movie)
+		private void RenderMovie(Movie movie)
 		{
 			Title.Text = movie.Title;
 			Tagline.Text = movie.Tagline;
 			Overview.Text = movie.Overview;
 			Backdrop.Source = $"https://image.tmdb.org/t/p/original/{movie.BackdropPath}";
 			Poster.Source = $"https://image.tmdb.org/t/p/original/{movie.PosterPath}";
-			renderGenres(movie);
-			renderRuntime(movie);
+			RenderGenres(movie);
+			RenderRuntime(movie);
 			Released.Text = movie.ReleaseDate.Year.ToString();
-			renderCast(movie);
+			RenderCast(movie);
 		}
 
-		private void renderGenres(Movie movie)
+		private void RenderGenres(Movie movie)
 		{
 			var genres = "";
 			for (int i = 0; i < movie.Genres.Length; i++)
@@ -64,16 +74,36 @@ namespace netflixRoulette
 			}
 		}
 
-		private void renderRuntime(Movie movie)
+		private void RenderRuntime(Movie movie)
 		{
 			var minutes = movie.Runtime % 60;
 			var hours = (int)movie.Runtime / 60;
 			Runtime.Text = $"{hours}h {minutes}m";
 		}
 
-		private void renderCast(Movie movie)
+		private void RenderCast(Movie movie)
 		{
-			// Not implemented
+			for (int castIndex = 0; castIndex < Math.Min(movie.Credits.Cast.Length, 5); castIndex++)
+			{
+				var cast = movie.Credits.Cast[castIndex];
+				CastGrid.Children.Add(new Image
+				{
+					Source = $"https://image.tmdb.org/t/p/w185/{cast.ProfilePath}",
+					HeightRequest = 50
+				}, 0, castIndex);
+				CastGrid.Children.Add(new Label
+				{
+					Text = cast.Name,
+					FontSize = 16,
+					VerticalTextAlignment = TextAlignment.Center
+				}, 1, castIndex);
+				CastGrid.Children.Add(new Label
+				{
+					Text = cast.Character,
+					FontSize = 16,
+					VerticalTextAlignment = TextAlignment.Center
+				}, 2, castIndex);
+			}
 		}
 	}
 }
