@@ -47,8 +47,7 @@ namespace netflixRoulette
             movieArrayList = new List<Result>(discoverObj.results);
 
             gridLayout.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1 , GridUnitType.Star)});
-                    
-
+                   
             gridLayout.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star)});
 
             Console.WriteLine("hello");
@@ -72,10 +71,15 @@ namespace netflixRoulette
                     image.Source = "https://image.tmdb.org/t/p/w500/" + movie.poster_path;
 
                     var tapGestureRecognizer = new TapGestureRecognizer();
-                    tapGestureRecognizer.Tapped += (s, e) =>
+                    tapGestureRecognizer.Tapped += async (s, e) =>
                     {
-                        Console.WriteLine(movie.id);
+                        var tabbedMovieId = movie.id;
+                        await Navigation.PushAsync(new MoviePage(tabbedMovieId));
                     };
+
+
+
+
 
                     image.GestureRecognizers.Add(tapGestureRecognizer);
 
