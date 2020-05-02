@@ -12,23 +12,20 @@ namespace netflixRoulette
 	public partial class MoviePage : ContentPage
 	{
 		private HttpClient _client = new HttpClient();
+		private int movieId;
 		private Movie movie;
 
-		public MoviePage()
+		public MoviePage(int movieId)
 		{
+			this.movieId = movieId;
 			InitializeComponent();
 		}
 
 		protected async override void OnAppearing()
 		{
 			base.OnAppearing();
-			movie = await fetchMovie(120);
+			movie = await fetchMovie(movieId);
 			renderMovie(movie);
-		}
-
-		public async void setMovie(int movieId)
-		{
-			await fetchMovie(movieId);
 		}
 
 		private async Task<Movie> fetchMovie(int movieId)
