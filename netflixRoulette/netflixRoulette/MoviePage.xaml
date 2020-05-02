@@ -10,35 +10,32 @@
 			<StackLayout>
 				<Label x:Name="Title"
 					Text="MOVIE_TITLE"
-				   BackgroundColor="Aquamarine"
 				   FontSize="32"
 				   FontAttributes="Bold"
+					   TextColor="Black"
 				   HorizontalTextAlignment="Center"/>
 				<Label x:Name="Tagline"
 					Text="MOVIE_TAGLINE"
 				   FontSize="16"
 				   FontAttributes="Italic"
-				   HorizontalTextAlignment="Center"
-				   BackgroundColor="HotPink"/>
+				   HorizontalTextAlignment="Center"/>
 				<Image x:Name="Backdrop" />
 				<StackLayout Orientation="Horizontal"
 						 HorizontalOptions="Center">
-					<Label Text="MOVIE_YEAR"
-					   BackgroundColor="LightCoral"
+					<Label x:Name="Released"
+						Text="MOVIE_YEAR"
 					   FontSize="16" 
 					   VerticalTextAlignment="Center"/>
 					<Label Text="/"
-					   BackgroundColor="LightBlue"
 					   FontSize="20" />
-					<Label Text="MOVIE_RUNTIME"
-					   BackgroundColor="LightCoral"
+					<Label x:Name="Runtime"
+						Text="MOVIE_RUNTIME"
 					   FontSize="16"  
 					   VerticalTextAlignment="Center"/>
 					<Label Text="/"
-					   BackgroundColor="LightBlue"
 					   FontSize="20"/>
-					<Label Text="MOVIE_GENRE"
-					   BackgroundColor="LightCoral"
+					<Label x:Name="Genre"
+						Text="MOVIE_GENRE"
 					   FontSize="16" 
 					   VerticalTextAlignment="Center"/>
 				</StackLayout>
@@ -47,7 +44,6 @@
 					   HeightRequest="200"/>
 					<Label x:Name="Overview"
 						Text="MOVIE_OVERVIEW"
-					   BackgroundColor="GreenYellow"
 					   FontSize="16" />
 				</StackLayout>
 				<Label Text="Cast"
@@ -62,7 +58,7 @@
 						<ColumnDefinition Width="*" />
 					</Grid.ColumnDefinitions>
 					<Grid.RowDefinitions>
-						
+
 					</Grid.RowDefinitions>
 					<Image Source="https://image.tmdb.org/t/p/original/2j4LJJfTPQtvnjp8LfSGOvWFATO.jpg"
 						   HeightRequest="50"
