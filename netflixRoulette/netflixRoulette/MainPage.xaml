@@ -8,7 +8,7 @@
              Title="Detail">
 
     <ScrollView>
-        <Grid x:Name="gridLayout" HorizontalOptions="Fill" VerticalOptions="Fill" ColumnSpacing="0" RowSpacing="0">
+        <Grid x:Name="gridLayout" HorizontalOptions="Fill" VerticalOptions="Fill" ColumnSpacing="0" RowSpacing="0" >
             <Image x:Name="movieImage"/>
         </Grid>
     </ScrollView>

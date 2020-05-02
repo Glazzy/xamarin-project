@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Web;
 using System.Globalization;
+using System.Diagnostics;
 
 namespace netflixRoulette
 {
@@ -33,8 +34,7 @@ namespace netflixRoulette
 
 		public MainDetail()
 		{
-			InitializeComponent();
-
+            InitializeComponent();
         }
 
 
@@ -47,11 +47,11 @@ namespace netflixRoulette
             movieArrayList = new List<Result>(discoverObj.results);
 
             gridLayout.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1 , GridUnitType.Star)});
-            gridLayout.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
+                    
 
             gridLayout.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star)});
-            gridLayout.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
 
+            Console.WriteLine("hello");
 
 
 
@@ -70,8 +70,14 @@ namespace netflixRoulette
 
                     Image image = new Image();
                     image.Source = "https://image.tmdb.org/t/p/w500/" + movie.poster_path;
-                 
-   
+
+                    var tapGestureRecognizer = new TapGestureRecognizer();
+                    tapGestureRecognizer.Tapped += (s, e) =>
+                    {
+                        Console.WriteLine(movie.id);
+                    };
+
+                    image.GestureRecognizers.Add(tapGestureRecognizer);
 
                     gridLayout.Children.Add(image, columnIndex, rowIndex);
                 }
@@ -80,7 +86,8 @@ namespace netflixRoulette
 
             base.OnAppearing();
 		}
-	}
+
+    }
 
     public class Result
     {
