@@ -19,15 +19,12 @@ namespace netflixRoulette
         public MainDetail()
 		{
             InitializeComponent();
+            CreateDiscoverGrid(discoverMovies);
         }
 
 
 		protected override async void OnAppearing()
 		{
-            discoverMovies = await FetchDiscoverMovies();
-
-            CreateDiscoverGrid(discoverMovies);
-
             base.OnAppearing();
 		}
 
@@ -39,8 +36,11 @@ namespace netflixRoulette
             return dataObj.results;
         }
 
-        private void CreateDiscoverGrid(IList<Result> discoverMovies)
+        private async void CreateDiscoverGrid(IList<Result> discoverMovies)
         {
+
+            discoverMovies = await FetchDiscoverMovies();
+
             gridLayout.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
             gridLayout.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
 
