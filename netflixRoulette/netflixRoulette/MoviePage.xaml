@@ -4,63 +4,62 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="netflixRoulette.MoviePage">
+             x:Class="netflixRoulette.MoviePage"
+			 Title="{Binding Movie.Title}">
 	<ContentPage.Content>
 		<ScrollView>
 			<StackLayout>
-				<Label x:Name="Title"
-					Text="MOVIE_TITLE"
-				   FontSize="32"
-				   FontAttributes="Bold"
-					   TextColor="Black"
-				   HorizontalTextAlignment="Center"/>
-				<Label x:Name="Tagline"
-					Text="MOVIE_TAGLINE"
-				   FontSize="16"
-				   FontAttributes="Italic"
-				   HorizontalTextAlignment="Center"/>
-				<Image x:Name="Backdrop" />
+				<Image Source="{Binding Movie.BackdropPathOriginal}"/>
 				<StackLayout Orientation="Horizontal"
-						 HorizontalOptions="Center">
-					<Label x:Name="Released"
-						Text="MOVIE_YEAR"
-					   FontSize="16" 
-					   VerticalTextAlignment="Center"/>
+							 HorizontalOptions="Center">
+					<Label Text="{Binding Movie.ReleaseDate.Year}"
+						   FontSize="16"
+						   VerticalTextAlignment="Center"/>
 					<Label Text="/"
-					   FontSize="20" />
-					<Label x:Name="Runtime"
-						Text="MOVIE_RUNTIME"
-					   FontSize="16"  
-					   VerticalTextAlignment="Center"/>
+						   FontSize="20"/>
+					<Label Text="{Binding Movie.RuntimeSpan, 
+										  StringFormat=\{0:h\\h\\ m\\m\}}"
+						   FontSize="16"  
+						   VerticalTextAlignment="Center"/>
 					<Label Text="/"
-					   FontSize="20"/>
-					<Label x:Name="Genre"
-						Text="MOVIE_GENRE"
-					   FontSize="16" 
-					   VerticalTextAlignment="Center"/>
+						   FontSize="20"/>
+					<Label Text="{Binding Movie.GenresText}"
+						   FontSize="16" 
+						   VerticalTextAlignment="Center"/>
 				</StackLayout>
 				<StackLayout Orientation="Horizontal">
-					<Image x:Name="Poster"
-					   HeightRequest="200"/>
-					<Label x:Name="Overview"
-						Text="MOVIE_OVERVIEW"
-					   FontSize="16" />
+					<Image HeightRequest="200"
+						   Source="{Binding Movie.PosterUrlOriginal}"/>
+					<Label Text="{Binding Movie.Overview}"
+						   FontSize="16"/>
 				</StackLayout>
-				<Label Text="Cast"
-				   BackgroundColor="DarkSalmon"
-				   FontSize="24"
-				   HorizontalTextAlignment="Center"/>
-				<Grid x:Name="CastGrid">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="Auto" />
-						<ColumnDefinition Width="*" />
-						<ColumnDefinition Width="*" />
-					</Grid.ColumnDefinitions>
-				</Grid>
-				<Label Text="See full cast..."
-					   FontSize="20"
-					   BackgroundColor="ForestGreen"
+				<Label Text="CAST"
+					   FontSize="24"
+					   Padding="8"
+					   TextColor="Black"
+					   BackgroundColor="RoyalBlue"
 					   HorizontalTextAlignment="Center"/>
+				<StackLayout BindableLayout.ItemsSource="{Binding CastPreview}">
+					<BindableLayout.ItemTemplate>
+						<DataTemplate>
+							<FlexLayout JustifyContent="SpaceEvenly"
+										AlignItems="Center"
+										HeightRequest="50">
+								<Image Source="{Binding ProfileUrlMedium}"
+									   FlexLayout.Basis="10%"/>
+								<Label Text="{Binding Name}"
+									   FontSize="16"
+									   FlexLayout.Basis="45%"/>
+								<Label Text="{Binding Character}"
+									   FontSize="16"
+									   HorizontalOptions="End"
+									   FlexLayout.Basis="45%"/>
+							</FlexLayout>
+						</DataTemplate>
+					</BindableLayout.ItemTemplate>
+				</StackLayout>
+				<Button Text="See full cast…"
+						FontSize="20"/>
 			</StackLayout>
 		</ScrollView>
 	</ContentPage.Content>

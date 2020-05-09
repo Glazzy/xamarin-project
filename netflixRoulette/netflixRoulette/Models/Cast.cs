@@ -26,5 +26,25 @@ namespace netflixRoulette.Models
 
 		[JsonProperty("profile_path")]
 		public string ProfilePath { get; set; }
+
+		public string ProfileUrlSmall
+		{
+			get => $"https://image.tmdb.org/t/p/w45/{ProfilePath}";
+		}
+
+		public string ProfileUrlMedium
+		{
+			get => $"https://image.tmdb.org/t/p/w185/{ProfilePath}";
+		}
+
+		public string ProfileUrlLarge
+		{
+			get => $"https://image.tmdb.org/t/p/h632/{ProfilePath}";
+		}
+
+		public string ProfileUrlOriginal
+		{
+			get => $"https://image.tmdb.org/t/p/original/{ProfilePath}";
+		}
 	}
 }

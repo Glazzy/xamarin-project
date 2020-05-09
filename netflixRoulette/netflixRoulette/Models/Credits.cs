@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace netflixRoulette.Models
 {
-	class Credits
+	public class Credits
 	{
 		[JsonProperty("cast")]
 		public Cast[] Cast { get; set; }

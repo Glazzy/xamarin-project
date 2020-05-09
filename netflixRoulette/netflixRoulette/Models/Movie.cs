@@ -3,13 +3,18 @@ using System;
 
 namespace netflixRoulette.Models
 {
-	class Movie
+	public class Movie
 	{
 		[JsonProperty("adult")]
 		public bool Adult { get; set; }
 
 		[JsonProperty("backdrop_path")]
 		public string BackdropPath { get; set; }
+
+		public string BackdropPathOriginal
+		{
+			get => $"https://image.tmdb.org/t/p/original/{BackdropPath}";
+		}
 
 		[JsonProperty("belongs_to_collection")]
 		public object BelongsToCollection { get; set; }
@@ -19,6 +24,11 @@ namespace netflixRoulette.Models
 
 		[JsonProperty("genres")]
 		public Genre[] Genres { get; set; }
+
+		public string GenresText
+		{
+			get => string.Join<Genre>(", ", Genres);
+		}
 
 		[JsonProperty("homepage")]
 		public string Homepage { get; set; }
@@ -44,6 +54,41 @@ namespace netflixRoulette.Models
 		[JsonProperty("poster_path")]
 		public string PosterPath { get; set; }
 
+		public string PosterUrl92
+		{
+			get => $"https://image.tmdb.org/t/p/w92/{PosterPath}";
+		}
+
+		public string PosterUrl154
+		{
+			get => $"https://image.tmdb.org/t/p/w154/{PosterPath}";
+		}
+
+		public string PosterUrl185
+		{
+			get => $"https://image.tmdb.org/t/p/w185/{PosterPath}";
+		}
+
+		public string PosterUrl342
+		{
+			get => $"https://image.tmdb.org/t/p/w342/{PosterPath}";
+		}
+
+		public string PosterUrl500
+		{
+			get => $"https://image.tmdb.org/t/p/w500/{PosterPath}";
+		}
+
+		public string PosterUrl780
+		{
+			get => $"https://image.tmdb.org/t/p/w780/{PosterPath}";
+		}
+
+		public string PosterUrlOriginal
+		{
+			get => $"https://image.tmdb.org/t/p/original/{PosterPath}";
+		}
+
 		[JsonProperty("production_companies")]
 		public ProductionCompany[] ProductionCompanies { get; set; }
 
@@ -58,6 +103,11 @@ namespace netflixRoulette.Models
 
 		[JsonProperty("runtime")]
 		public long Runtime { get; set; }
+
+		public TimeSpan RuntimeSpan
+		{
+			get => TimeSpan.FromMinutes(Runtime);
+		}
 
 		[JsonProperty("spoken_languages")]
 		public SpokenLanguage[] SpokenLanguages { get; set; }
@@ -82,5 +132,10 @@ namespace netflixRoulette.Models
 
 		[JsonProperty("credits")]
 		public Credits Credits { get; set; }
+
+		public override string ToString()
+		{
+			return Title;
+		}
 	}
 }

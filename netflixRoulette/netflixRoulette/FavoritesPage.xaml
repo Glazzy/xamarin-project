@@ -4,12 +4,28 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="netflixRoulette.FavoritesPage">
+             x:Class="netflixRoulette.FavoritesPage"
+			 x:Name="MyPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+		<ScrollView>
+			<StackLayout BindableLayout.ItemsSource="{Binding Movies}">
+				<BindableLayout.ItemTemplate>
+					<DataTemplate>
+						<FlexLayout JustifyContent="SpaceEvenly"
+									AlignItems="Center">
+							<FlexLayout.GestureRecognizers>
+								<TapGestureRecognizer Command="{Binding BindingContext.TappedCommand, Source={x:Reference MyPage}}"
+													  CommandParameter="{Binding .}"/>
+							</FlexLayout.GestureRecognizers>
+							<Image Source="{Binding PosterUrl185}"
+								   FlexLayout.Basis="20%"/>
+							<Label Text="{Binding Title}"
+								   FontSize="20"
+								   FlexLayout.Basis="80%"/>
+						</FlexLayout>
+					</DataTemplate>
+				</BindableLayout.ItemTemplate>
+			</StackLayout>
+		</ScrollView>
     </ContentPage.Content>
 </ContentPage>
