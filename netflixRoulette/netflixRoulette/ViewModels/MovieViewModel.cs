@@ -19,7 +19,7 @@ namespace netflixRoulette.ViewModels
 
 		private async void FetchMovie(long movieId)
 		{
-			Movie = await DataAccess.Movies.GetMovieAsync(movieId, withCredits: true);
+			Movie = await DataAccess.MovieDataAccess.GetMovieAsync(movieId, withCredits: true);
 		}
 
 		public Movie Movie

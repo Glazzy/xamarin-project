@@ -21,7 +21,7 @@ namespace netflixRoulette.ViewModels
 		{
 			foreach (var id in favIds)
 			{
-				Movie movie = await DataAccess.Movies.GetMovieAsync(id);
+				Movie movie = await DataAccess.MovieDataAccess.GetMovieAsync(id);
 				movies.Add(movie);
 			}
 		}
