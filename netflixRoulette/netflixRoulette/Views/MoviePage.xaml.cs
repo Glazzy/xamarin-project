@@ -11,16 +11,9 @@ namespace netflixRoulette
 	{
 		public MovieViewModel ViewModel { get; set; }
 
-		public MoviePage(int movieId)
+		public MoviePage(long movieId)
 		{
 			ViewModel = new MovieViewModel(movieId);
-			BindingContext = ViewModel;
-			InitializeComponent();
-		}
-
-		public MoviePage(Movie movie)
-		{
-			ViewModel = new MovieViewModel(movie);
 			BindingContext = ViewModel;
 			InitializeComponent();
 		}

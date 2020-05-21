@@ -63,8 +63,7 @@ namespace netflixRoulette
                     var tapGestureRecognizer = new TapGestureRecognizer();
                     tapGestureRecognizer.Tapped += async (s, e) =>
                     {
-                       
-                        await Navigation.PushAsync(new MoviePage(movie));
+                        await Navigation.PushAsync(new MoviePage(movie.Id));
                     };
 
                     image.GestureRecognizers.Add(tapGestureRecognizer);

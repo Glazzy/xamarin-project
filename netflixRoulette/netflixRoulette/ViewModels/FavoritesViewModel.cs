@@ -29,7 +29,7 @@ namespace netflixRoulette.ViewModels
 		private void RowTapped(object obj)
 		{
 			var movie = (Movie)obj;
-			navigation.PushAsync(new MoviePage(movie));
+			navigation.PushAsync(new MoviePage(movie.Id));
 		}
 
 		public IList<Movie> Movies
