@@ -14,7 +14,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="100" />
             </Grid.RowDefinitions>
-            <Image Source="{Binding imageSource}" />
+            <Image Source="{Binding Movie.PosterUrlOriginal}"/>
             <FlexLayout Grid.Row="1" AlignContent="Start" Margin="0">
                 <Button Text="Action" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Clicked="randomMovie" BindingContext="Action"/>
                 <Button Text="Comedy" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Clicked="randomMovie" BindingContext="Comedy"/>

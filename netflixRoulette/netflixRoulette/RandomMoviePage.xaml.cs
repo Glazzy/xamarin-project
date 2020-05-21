@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -16,11 +17,22 @@ namespace netflixRoulette
 	public partial class RandomMoviePage : ContentPage
 	{
 		private HttpClient _client = new HttpClient();
-		private IList<Movie> randomMovies;
+		private Movie movie;
+
+		public Movie Movie
+		{
+			get => movie;
+			set
+			{
+				movie = value;
+				OnPropertyChanged();
+			}
+		}
 
 		public RandomMoviePage()
 		{
 			InitializeComponent();
+			BindingContext = this;
 		}
 
 
@@ -50,27 +62,27 @@ namespace netflixRoulette
 		private async void randomMovie(object sender, EventArgs e)
 		{
 			string data = ((Button)sender).BindingContext as string;
-			Movie movie;
+			
 
 			switch (data)
 			{
 				case "Action":
-					movie = await getRandomMovie(28);
+					Movie = await getRandomMovie(28);
 					break;
 				case "Comedy":
-					 movie = await getRandomMovie(35);
+					Movie = await getRandomMovie(35);
 					break;
 				case "Drama":
-					movie = await getRandomMovie(18);
+					Movie = await getRandomMovie(18);
 					break;
 				case "Thriller":
-					movie = await getRandomMovie(53);
+					Movie = await getRandomMovie(53);
 					break;
 				case "Family":
-					movie = await getRandomMovie(10751);
+					Movie = await getRandomMovie(10751);
 					break;
 				default:
-					movie = await getRandomMovie(28);
+					Movie = await getRandomMovie(28);
 					break;
 			}
 			
