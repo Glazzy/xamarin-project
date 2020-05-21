@@ -24,7 +24,7 @@ Denne side viser information om en enkelt film, og der navigeres til denne hver 
 
 ### RandomMoviePage
 
-RandomMoviePage er lavet af Kevin.
+Her kan vises en tilfældig film fra en given genre. RandomMoviePage er lavet af Kevin.
 
 ### SearchPage
 
