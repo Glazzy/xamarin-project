@@ -9,6 +9,6 @@ namespace netflixRoulette.Models
         public int page { get; set; }
         public int total_results { get; set; }
         public int total_pages { get; set; }
-        public IList<Result> results { get; set; }
+        public IList<Movie> results { get; set; }
     }
 }

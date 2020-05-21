@@ -6,10 +6,22 @@
              mc:Ignorable="d"
              x:Class="netflixRoulette.RandomMoviePage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="100" />
+            </Grid.RowDefinitions>
+            <Image Source="{Binding imageSource}" />
+            <FlexLayout Grid.Row="1" AlignContent="Start" Margin="0">
+                <Button Text="Action" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Clicked="randomMovie" BindingContext="Action"/>
+                <Button Text="Comedy" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Clicked="randomMovie" BindingContext="Comedy"/>
+                <Button Text="Drama" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Clicked="randomMovie" BindingContext="Drama"/>
+                <Button Text="Thriller" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Clicked="randomMovie" BindingContext="Thriller"/>
+                <Button Text="Family" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Clicked="randomMovie" BindingContext="Family"/>
+            </FlexLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

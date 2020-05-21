@@ -14,7 +14,7 @@ namespace netflixRoulette
 	public partial class MainDetail : ContentPage
 	{
 		private HttpClient _client = new HttpClient();
-        private IList<Result> discoverMovies;
+        private IList<Movie> discoverMovies;
 
         public MainDetail()
 		{
@@ -28,7 +28,7 @@ namespace netflixRoulette
             base.OnAppearing();
 		}
 
-        private async Task<IList<Result>> FetchDiscoverMovies()
+        private async Task<IList<Movie>> FetchDiscoverMovies()
         {
             var content = await _client.GetStringAsync("https://api.themoviedb.org/3/discover/movie?api_key=753434cd814a187484a6ad7f29768fe0");
             var dataObj = JsonConvert.DeserializeObject<Example>(content);
@@ -36,7 +36,7 @@ namespace netflixRoulette
             return dataObj.results;
         }
 
-        private async void CreateDiscoverGrid(IList<Result> discoverMovies)
+        private async void CreateDiscoverGrid(IList<Movie> discoverMovies)
         {
 
             discoverMovies = await FetchDiscoverMovies();
@@ -58,13 +58,13 @@ namespace netflixRoulette
                     movieIndex += 1;
 
                     Image image = new Image();
-                    image.Source = "https://image.tmdb.org/t/p/w500/" + movie.poster_path;
+                    image.Source = "https://image.tmdb.org/t/p/w500/" + movie.PosterPath;
 
                     var tapGestureRecognizer = new TapGestureRecognizer();
                     tapGestureRecognizer.Tapped += async (s, e) =>
                     {
-                        var tabbedMovieId = movie.id;
-                        await Navigation.PushAsync(new MoviePage(tabbedMovieId));
+                       
+                        await Navigation.PushAsync(new MoviePage(movie));
                     };
 
                     image.GestureRecognizers.Add(tapGestureRecognizer);

@@ -20,5 +20,10 @@ namespace netflixRoulette.Models
         public double vote_average { get; set; }
         public string overview { get; set; }
         public string release_date { get; set; }
+
+        public string posterSource
+        {
+            get => $"https://image.tmdb.org/t/p/original/{poster_path}";
+        }
     }
 }
