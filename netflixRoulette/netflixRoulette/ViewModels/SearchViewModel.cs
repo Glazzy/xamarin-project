@@ -93,5 +93,16 @@ namespace netflixRoulette.ViewModels
 				OnPropertyChanged(nameof(SearchQuery));
 			}
 		}
+
+		private void RowTapped(object obj)
+		{
+			var movie = (MovieResult)obj;
+			navigation.PushAsync(new MoviePage(movie.Id));
+		}
+
+		public Command TappedCommand
+		{
+			get => new Command(RowTapped);
+		}
 	}
 }
