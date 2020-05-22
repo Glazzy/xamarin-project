@@ -22,10 +22,14 @@
 						<RowDefinition Height="Auto"/>
 						<RowDefinition Height="10"/>
 					</Grid.RowDefinitions>
-					<Label Grid.Column="1"
+					<Entry Grid.Column="1"
                            Grid.Row="1"
-                           Text="Test"
-						   FontSize="24"/>
+						   BackgroundColor="White"
+						   ReturnType="Search"
+                           Placeholder="Search movies"
+						   Text="{Binding SearchQuery}"
+						   ReturnCommand="{Binding SearchCommand}"
+						   ReturnCommandParameter="{Binding SearchQuery}"/>
 				</Grid>
 			</ListView.Header>
 			<ListView.ItemTemplate>

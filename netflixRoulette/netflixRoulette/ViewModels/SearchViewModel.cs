@@ -9,6 +9,7 @@ namespace netflixRoulette.ViewModels
 		private INavigation navigation;
 		private string query;
 		private Results results;
+		private string searchQuery;
 
 		public SearchViewModel(INavigation navigation)
 		{
@@ -54,7 +55,7 @@ namespace netflixRoulette.ViewModels
 
 		private void PreviousPage(object obj)
 		{
-			FetchMovies(query, (int) results.Page - 1);
+			FetchMovies(query, (int)results.Page - 1);
 		}
 
 		public Command PreviousCommand
@@ -64,12 +65,33 @@ namespace netflixRoulette.ViewModels
 
 		private void NextPage(object obj)
 		{
-			FetchMovies(query, (int) results.Page + 1);
+			FetchMovies(query, (int)results.Page + 1);
 		}
 
 		public Command NextCommand
 		{
 			get => new Command(NextPage);
+		}
+
+		private void DoSearch(object query)
+		{
+			SearchQuery = string.Empty;
+			FetchMovies((string)query);
+		}
+
+		public Command SearchCommand
+		{
+			get => new Command(DoSearch);
+		}
+
+		public string SearchQuery
+		{
+			get => searchQuery;
+			set
+			{
+				searchQuery = value;
+				OnPropertyChanged(nameof(SearchQuery));
+			}
 		}
 	}
 }
