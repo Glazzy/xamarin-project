@@ -19,9 +19,9 @@ namespace netflixRoulette.DataAccess
 			return JsonConvert.DeserializeObject<Movie>(content);
 		}
 
-		public static async Task<Results> SearchMoviesAsync(string query)
+		public static async Task<Results> SearchMoviesAsync(string query, int page = 1)
 		{
-			var url = $"{baseUrl}/search/movie?api_key={apiKey}&query={query}";
+			var url = $"{baseUrl}/search/movie?api_key={apiKey}&query={query}&page={page}";
 			var content = await client.GetStringAsync(url);
 			return JsonConvert.DeserializeObject<Results>(content);
 		}

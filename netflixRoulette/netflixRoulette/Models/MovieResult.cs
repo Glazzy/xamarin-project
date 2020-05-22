@@ -80,6 +80,6 @@ namespace netflixRoulette.Models
 		public string Overview { get; set; }
 
 		[JsonProperty("release_date")]
-		public DateTimeOffset ReleaseDate { get; set; }
+		public DateTimeOffset? ReleaseDate { get; set; }
 	}
 }

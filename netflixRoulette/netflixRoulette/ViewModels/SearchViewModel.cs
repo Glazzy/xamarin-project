@@ -22,9 +22,9 @@ namespace netflixRoulette.ViewModels
 			FetchMovies(query);
 		}
 
-		private async void FetchMovies(string query)
+		private async void FetchMovies(string query, int page = 1)
 		{
-			Results = await MovieDataAccess.SearchMoviesAsync(query);
+			Results = await MovieDataAccess.SearchMoviesAsync(query, page);
 		}
 
 		public Results Results
@@ -35,6 +35,41 @@ namespace netflixRoulette.ViewModels
 				results = value;
 				OnPropertyChanged();
 			}
+		}
+
+		public string Pages
+		{
+			get => $"Page {results?.Page} of {results?.TotalPages}";
+		}
+
+		public bool NotFirstPage
+		{
+			get => results?.Page > 1;
+		}
+
+		public bool NotLastPage
+		{
+			get => results?.Page < results?.TotalPages;
+		}
+
+		private void PreviousPage(object obj)
+		{
+			FetchMovies(query, (int) results.Page - 1);
+		}
+
+		public Command PreviousCommand
+		{
+			get => new Command(PreviousPage);
+		}
+
+		private void NextPage(object obj)
+		{
+			FetchMovies(query, (int) results.Page + 1);
+		}
+
+		public Command NextCommand
+		{
+			get => new Command(NextPage);
 		}
 	}
 }

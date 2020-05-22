@@ -43,12 +43,26 @@
 				</DataTemplate>
 			</ListView.ItemTemplate>
 			<ListView.Footer>
-				<FlexLayout>
-					<Button Text="Previous"/>
-					<Label Text="1 of 2"
-						   FlexLayout.Grow="1"/>
-					<Button Text="Next"/>
-				</FlexLayout>
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="1*"/>
+						<ColumnDefinition Width="2*"/>
+						<ColumnDefinition Width="1*"/>
+					</Grid.ColumnDefinitions>
+					<Button Text="Previous"
+							Grid.Column="0"
+							IsVisible="{Binding NotFirstPage}"
+							Command="{Binding PreviousCommand}"/>
+					<Label Text="{Binding Pages}"
+						   Grid.Column="1"
+						   FontSize="20"
+						   VerticalOptions="CenterAndExpand"
+						   HorizontalOptions="CenterAndExpand"/>
+					<Button Text="Next"
+							Grid.Column="2"
+							IsVisible="{Binding NotLastPage}"
+							Command="{Binding NextCommand}"/>
+				</Grid>
 			</ListView.Footer>
 		</ListView>
 	</ContentPage.Content>
