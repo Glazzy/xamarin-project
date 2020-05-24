@@ -10,6 +10,7 @@ namespace netflixRoulette.ViewModels
 		private string query;
 		private Results results;
 		private string searchQuery;
+		private MovieResult selectedItem;
 
 		public SearchViewModel(INavigation navigation)
 		{
@@ -94,15 +95,29 @@ namespace netflixRoulette.ViewModels
 			}
 		}
 
-		private void RowTapped(object obj)
-		{
-			var movie = (MovieResult)obj;
-			navigation.PushAsync(new MoviePage(movie.Id));
-		}
+		//private void RowTapped(object obj)
+		//{
+		//	var movie = (MovieResult)obj;
+		//	navigation.PushAsync(new MoviePage(movie.Id));
+		//}
 
-		public Command TappedCommand
+		//public Command TappedCommand
+		//{
+		//	get => new Command(RowTapped);
+		//}
+
+		public MovieResult SelectedItem
 		{
-			get => new Command(RowTapped);
+			get => selectedItem;
+			set
+			{
+				selectedItem = value;
+				OnPropertyChanged(nameof(SelectedItem));
+				if (selectedItem == null) return;
+				navigation.PushAsync(new MoviePage(selectedItem.Id));
+
+				SelectedItem = null;
+			}
 		}
 	}
 }
